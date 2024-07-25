@@ -1,21 +1,16 @@
-import { MainGame } from './scenes/MainGame';
+import { MainGame } from './scenes/main-game';
 import { AUTO, Scale, Game } from 'phaser';
 
 const config = {
-    type: AUTO,
+    type: AUTO, // Tipo de renderizado, si el ordenador soporta WebGL será esa la opción por defecto, caso contrario usa Canvas.
     width: 600,
     height: 300,
-    parent: 'game-container',
-    backgroundColor: '#028af8',
     scale: {
         mode: Scale.FIT,
         autoCenter: Scale.CENTER_BOTH
     },
-    scene: [
-        MainGame, GameOver
-    ],
-    autoRound: false,
-    parent: "game-container",
+    autoRound: false, // para redondear las coordenadas de los objetos
+    parent: 'game-container', // div donde se renderiza el juego
     physics: {
         default: "arcade",
         arcade: {
@@ -23,6 +18,8 @@ const config = {
             debug: true,
         },
     },
+    scene: [MainGame],
+    backgroundColor: '#ffffff',
 };
 
 export default new Game(config);
